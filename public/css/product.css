@@ -1,10 +1,13 @@
 body {
-    background-color: yellow;
-    font-size: 30px;
+    background-color: lightblue;
 }
 
 .product-card {
-    width: 200px;
-    height: 400px;
-    text-align: center;
+    margin: 10px auto;
+
+}
+
+.product-image {
+    /* max-height:175px; 
+    max-width: 200px;  */
 }
