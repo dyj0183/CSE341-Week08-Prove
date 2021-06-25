@@ -5,31 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link href="/css/product.css" rel="stylesheet">
+    <!-- <link href="/css/product.css" rel="stylesheet"> -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
 </head>
 <body>
-    <h1>Welcome to <%= title %> Store</h1>
-    <section>
-        <h2>Products</h2>
-        <div class="products">
+    <div class="jumbotron" style="text-align: center;">
+        <h1>Welcome to Yu-Chun's <%= title %> Store</h1>
+    </div>
+  
+    <section style="text-align: center;">
+        <div class="products card-deck">
             <% products.forEach(p => { %>
-                <div class="product-card">
-                    <h3><%= p.name %></h3>
-                    <div class="product-image">
-                        <img src="<%= p.imageUrl %>" alt="<%= p.name %>">
+                <div class="card" style="min-width: 300px; padding: 10px; margin: 10px;">
+                    <h3 class="card-title"><%= p.name %></h3>
+                    <div class="card-img-top">
+                        <img src="<%= p.imageUrl %>" alt="<%= p.name %>" style="width:100%">
                     </div>
-                    <p class="product-price">$<%= p.price.toFixed(2) %></p>
-                    <p class="product-description"><%= p.description %></p>
+                    <p class="card-text">$<%= p.price.toFixed(2) %></p>
+                    <p class="card-text"><%= p.description %></p>
                 </div>
            <% }) %>
         </div>
 
-        <div class="pagination">
+        <div class="pagination d-flex justify-content-center">
             <% if (1 !== lastPage) { %>
-                <a href="?page=1">first</a>
-                <% if (currentPage !== 1) { %> <a class="btn" href="?page=<%= previousPage %> "> prev </a> <% } %>
-                <% if (currentPage !== lastPage) { %> <a class="btn" href="?page=<%= nextPage %> "> next </a> <% } %>
-                <% if (currentPage !== lastPage) { %> <a class="btn" href="?page=<%= lastPage %> "> last </a> <% } %>
+                <a href="?page=1" class="btn btn-primary" style="margin: 5px;">First</a>
+                <% if (currentPage !== 1) { %> <a class="btn btn-primary"  href="?page=<%= previousPage %> " style="margin: 5px;"> Prev </a> <% } %>
+                <% if (currentPage !== lastPage) { %> <a class="btn btn-primary" href="?page=<%= nextPage %> " style="margin: 5px;"> Next </a> <% } %>
+                <% if (currentPage !== lastPage) { %> <a class="btn btn-primary" href="?page=<%= lastPage %> " style="margin: 5px;"> Last </a> <% } %>
 
             <% } %>
         </div>

@@ -6,6 +6,12 @@ const PRODUCTS_PER_PAGE = 10;
 exports.getIndex = (req, res, next) => {
     const page = +req.query.page; // turn string into number
 
+    // if the website just got loaded, no page in the url yet,
+    // so page is NaN, if it is NaN, then we want to redirect to page=1 so users can see the products
+    if (isNaN(page)) {
+        return res.redirect("/?page=1");
+    }
+
     fetch(url)
         .then(res => res.json())
         .then(data => {
